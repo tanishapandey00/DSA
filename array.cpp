@@ -21,11 +21,11 @@ public:
         }
     }
     //contructor with inputs
-    Array(int size, int used_size)
+    Array(int size)
     {
         this->size = size;
         array = new int[size];
-        this->used_size = used_size;
+        used_size=0;
     }
     //entering elemnts of array
     void get_elements(){
@@ -50,6 +50,24 @@ public:
             if (array[i] == key)
             {
                 return i;
+            }
+        }
+        return -1;
+    }
+    //Simple Binary search
+    int BinarySearch(int key){
+        int start=0;
+        int end=used_size-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(array[mid]==key){
+                return mid;
+            }
+            else if(array[mid]>key){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
             }
         }
         return -1;
@@ -133,7 +151,7 @@ int main()
     Array *array2;
     int size , used_size;
     cin>>size>>used_size;
-    array2 =new Array(size,used_size);
+    array2 =new Array(size);
     cout<<"Enter elements of array";
     array2->get_elements();
     array2->printElement();
