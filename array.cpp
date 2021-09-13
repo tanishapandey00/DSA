@@ -131,7 +131,7 @@ public:
             if (array[i] > max)
             {
                 max = array[i];
-                index_max =i;
+                index_max = i;
             }
             if (array[i] < min)
             {

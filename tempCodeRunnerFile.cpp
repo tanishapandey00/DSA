@@ -1,1 +1,1 @@
-if(i==index)
+ cout<<"Max"<<max_ele;
