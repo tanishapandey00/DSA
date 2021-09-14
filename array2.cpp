@@ -143,15 +143,15 @@ public:
     //Reverse elements of an Array Algorithm 1
     void reverse()
     {
-        int n;
-        n = used_size - 1;
-        int i = 0;
-        while (n != i)
+        int end = used_size - 1;
+        int start = 0;
+        while (start < end)
         {
-            int temp = array[i];
-            array[i] = array[n - i];
-            array[n - i] = temp;
-            i++;
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            start++;
+            end--;
         }
     }
     //Deleting last element
@@ -194,8 +194,9 @@ public:
                 array[i] = array[i + 1];
             }
         }
-        else{
-            cout<<"Wrong Input"<<endl;
+        else
+        {
+            cout << "Wrong Input" << endl;
         }
         used_size--;
     }
@@ -209,28 +210,29 @@ int main()
     array1 = new Array(size, used_size);
     cout << "Enter elements of your array" << endl;
     array1->get_element();
-    array1->print_array();
+    //array1->print_array();
     //int key;
     //cout << "Enter you key ";
     //cin >> key;
     //cout<<array1->linear_transposition_search(key)<<endl;
     //array1->print_array();
-    int element, index;
+    //int element, index;
     //cout << "Enter element you want to delete" << endl;
     //cin >> element;
-    cout << "Enter the index you want to Delete" << endl;
-    cin >> index;
+    //cout << "Enter the index you want to Delete" << endl;
+    //cin >> index;
     //cout << "Enter Element and index you want to add";
     //cin >> element >> index;
     //array1->Add_at_end(element);
-    //array1->print_array();
+
     //array1->Add_at_index_m1(element,index);
     //array1->Add_at_index_m2(element, index);
     //array1->Add_at_sorted_array(element);
-    //array1->reverse();
+    array1->reverse();
+    array1->print_array();
     //array1->Del_last();
     //array1->Del_element(element);
-    array1->Del_ele_in_index(index);
-    array1->print_array();
+    //array1->Del_ele_in_index(index);
+    //array1->print_array();
     return 0;
 }
