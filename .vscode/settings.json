@@ -9,6 +9,8 @@
         "utility": "cpp",
         "valarray": "cpp",
         "iomanip": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "ostream": "cpp",
+        "*.tcc": "cpp"
     }
 }

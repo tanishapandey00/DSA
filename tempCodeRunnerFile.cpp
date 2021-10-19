@@ -1,1 +1,1 @@
- cout<<"Max"<<max_ele;
+int d=a
