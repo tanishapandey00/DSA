@@ -11,6 +11,7 @@
         "iomanip": "cpp",
         "random": "cpp",
         "ostream": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "vector": "cpp"
     }
 }
