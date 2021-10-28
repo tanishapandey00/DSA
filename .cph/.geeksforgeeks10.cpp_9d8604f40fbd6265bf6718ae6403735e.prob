@@ -1,0 +1,1 @@
+{"name":"Local: geeksforgeeks10","url":"c:\\Users\\TANIS\\OneDrive\\Desktop\\DSA 40days\\geeksforgeeks10.cpp","tests":[{"id":1635400270722,"input":"7\n1 10 10 10 20 20 40\n20","output":"5\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\TANIS\\OneDrive\\Desktop\\DSA 40days\\geeksforgeeks10.cpp","group":"local","local":true}
