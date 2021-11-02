@@ -12,6 +12,8 @@
         "random": "cpp",
         "ostream": "cpp",
         "*.tcc": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "limits": "cpp",
+        "climits": "cpp"
     }
 }
