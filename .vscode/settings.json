@@ -15,6 +15,7 @@
         "vector": "cpp",
         "limits": "cpp",
         "climits": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "iterator": "cpp"
     }
 }
