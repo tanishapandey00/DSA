@@ -1,3 +1,4 @@
+//Singliy Linked List
 #include <iostream>
 using namespace std;
 // Creating Simple Linked List
@@ -60,18 +61,86 @@ Node *insertEnd(Node *head, int x)
     curr->next = temp;
     return head;
 }
-//Delete first Node of the Singly linked list
-Node *DeleteFirst(Node *head){
-    if(head==NULL) return NULL;
-    else{
+// Delete first Node of the Singly linked list
+Node *DeleteFirst(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    else
+    {
         Node *temp = head->next;
         delete head;
         return temp;
     }
 }
-//Delete Last Node of the Singly Linked list
-Node *Deletelast(Node *head){
-    
+// Delete Last Node of the Singly Linked list
+Node *Deletelast(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    if (head->next == NULL)
+    {
+        delete head;
+        return NULL;
+    }
+    Node *curr = head;
+    while (curr->next->next != NULL)
+        curr = curr->next;
+    delete (curr->next);
+    curr->next = NULL;
+    return head;
+}
+// Insert an Element at given position in singly linked list
+Node *insertPos(Node *head, int pos, int data)
+{
+    Node *temp = new Node(data);
+    if (pos == 1)
+    {
+        temp->next = head;
+        return temp;
+    }
+    Node *curr = head;
+    for (int i = 1; i <= pos - 2 && curr != NULL; i++)
+        curr = curr->next;
+    if (curr == NULL)
+        return head;
+    temp->next = curr->next;
+    curr->next = temp;
+    return head;
+}
+// Search in a Singly Linked list
+// Itrative Approach
+int SearchI(Node *head, int x)
+{
+    int pos = 1;
+    Node *curr = head;
+    while (curr != NULL)
+    {
+        if (curr->data == x)
+            return pos;
+        else
+        {
+            pos++;
+            curr = curr->next;
+        }
+    }
+    return -1;
+}
+// Recursive Approach
+int SearchR(Node *head, int x)
+{
+    if (head == NULL)
+        return -1;
+    if (head->data == x)
+        return 1;
+    else
+    {
+        int res = SearchR(head->next, x);
+        if (res == -1)
+            return -1;
+        else
+            return (res + 1);
+    }
 }
 int main()
 {
