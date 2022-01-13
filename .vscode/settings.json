@@ -16,6 +16,9 @@
         "limits": "cpp",
         "climits": "cpp",
         "unordered_map": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "new": "cpp",
+        "deque": "cpp",
+        "string": "cpp"
     }
 }
