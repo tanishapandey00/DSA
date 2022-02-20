@@ -2,8 +2,9 @@
 #include <stack>
 #include <vector>
 #include <algorithm>
+#include <string>
 using namespace std;
-// Remove outer parenthess
+// Remove Outermost Parentheses
 /*A valid parentheses string is either empty "", "(" + A + ")", or A + B, where A and B are valid parentheses strings, and + represents string concatenation.
 
 For example, "", "()", "(())()", and "(()(()))" are all valid parentheses strings.
@@ -15,19 +16,25 @@ Return s after removing the outermost parentheses of every primitive string in t
 int main()
 {
     string s = "(()())(())";
-    stack<int> st;
+    stack<char> st;
     string ans = "";
-    for (int i = 0; i < s.length(); i++)
+    for (auto it : s)
     {
-        if (s[i] == ')')
+        if (it == '(')
+        {
+            if (st.empty() == false)
+                ans.push_back(it);
+            st.push(it);
+        }
+        else
+        {
             st.pop();
-        if (st.size() != 0)
-            ans += s[i];
-        if (s[i] == '(')
-            st.push(s[i]);
+            if (st.empty() == false)
+                ans.push_back(it);
+        }
     }
     for (auto a : ans)
-        cout << a;
+        cout << a << " ";
     cout << endl;
     return 0;
 }
