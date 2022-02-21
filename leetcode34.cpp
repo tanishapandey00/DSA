@@ -16,7 +16,34 @@ This continues until none of the queue students want to take the top sandwich an
 
 You are given two integer arrays students and sandwiches where sandwiches[i] is the type of the i​​​​​​th sandwich in the stack (i = 0 is the top of the stack) and students[j] is the preference of the j​​​​​​th student in the initial queue (j = 0 is the front of the queue). Return the number of students that are unable to eat.*/
 int main()
-{ vector<int> students = {}
-
+{
+    vector<int> students = {1, 1, 0, 0};
+    vector<int> sandwichs = {0, 1, 0, 1};
+    queue<int> stu;
+    stack<int> san;
+    for (auto s : students)
+        stu.push(s);
+    for (int i = sandwichs.size() - 1; i >= 0; i--)
+        san.push(sandwichs[i]);
+    int c = 0;
+    while (stu.empty() == false)
+    {
+        if (stu.front() == san.top())
+        {
+            stu.pop();
+            san.pop();
+            c = 0;
+        }
+        else
+        {
+            int u = stu.front();
+            stu.pop();
+            stu.push(u);
+            c++;
+            if (c == stu.size())
+                break;
+        }
+    }
+    cout << stu.size() << endl;
     return 0;
 }
