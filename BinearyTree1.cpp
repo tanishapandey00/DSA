@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <queue>
 #include <climits>
+#include <cmath>
 using namespace std;
 // Creating and Inplemneting differtent properties of Binary tree
 class BinaryTree
@@ -11,6 +12,7 @@ class BinaryTree
 public:
     BinaryTree *left;
     BinaryTree *right;
+    int maxLevel = 0;
     BinaryTree(int k)
     {
         key = k;
@@ -145,6 +147,72 @@ public:
         }
     }
     // PrintLeft View
+    // Method 1 (Recusive Approach)
+    void printleft(BinaryTree *root, int level)
+    {
+        if (root == NULL)
+            return;
+        if (maxLevel < level)
+        {
+            cout << root->key << " ";
+            maxLevel = level;
+        }
+        printleft(root->left, level + 1);
+        printleft(root->right, level + 1);
+    }
+    void printleftview1(BinaryTree *root)
+    {
+        printleft(root, 1);
+    }
+    // Method 2 Itreative Approach
+    void printleftview2(BinaryTree *root)
+    {
+        if (root == NULL)
+            return;
+        queue<BinaryTree *> q;
+        q.push(root);
+        while (q.empty() == false)
+        {
+            int count = q.size();
+            for (int i = 0; i < count; i++)
+            {
+                BinaryTree *curr = q.front();
+                q.pop();
+                if (i == 0)
+                {
+                    cout << curr->key << " ";
+                }
+                if (curr->left != NULL)
+                    q.push(curr->left);
+                if (curr->right != NULL)
+                    q.push(curr->right);
+            }
+        }
+    }
+    // Children Sum Property we are going tocheck if the Binary tree follows children sum property or not
+    bool csp(BinaryTree *root)
+    {
+        if (root == NULL)
+            return true;
+        if (root->left == NULL && root->right == NULL)
+            return true;
+        int sum = 0;
+        if (root->left != NULL)
+            sum += root->left->key;
+        if (root->right != NULL)
+            sum += root->right->key;
+        return (root->key == sum && csp(root->left) && csp(root->right));
+    }
+    // Balanced Binary Tree
+    //method 1
+    bool balacedBT(BinaryTree *root)
+    {
+        if (root == NULL)
+            return true;
+        int h1 = height(root->left), h2 = height(root->right);
+        return ((h2 - h1) <= 1 && balacedBT(root->left) && balacedBT(root->right));
+    }
+    //method 2
 };
 int main()
 {
@@ -164,8 +232,12 @@ int main()
     root->Levelorder1(root);
     cout << endl;
     root->levelorder2(root);
-    cout << endl;
     cout << "Size of Tree " << root->TreeSize(root) << endl;
     cout << "Max = " << root->getmax(root) << endl;
+    root->printleftview1(root);
+    cout << endl;
+    root->printleftview2(root);
+    cout << endl;
+    cout << root->csp(root) << endl;
     return 0;
 }
