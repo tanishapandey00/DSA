@@ -3,20 +3,24 @@
 #include <vector>
 #include <string>
 using namespace std;
-void generateparathesis(vector<string> &ans, string s, int open, int close, int n)
+void generateparathesis(vector<string> &ans, string s, int open, int close)
 {
-    if (s.length() == 2 * n)
+    if (open == 0 && close == 0)
     {
         ans.push_back(s);
         return;
     }
-    if (open < n)
+    if (open > 0)
     {
-        generateparathesis(ans, s + '(', open + 1, close, n);
+        s += '(';
+        generateparathesis(ans, s, open - 1, close);
+        s.pop_back();
     }
-    if (close < open)
+    if (close > 0 && close < open)
     {
-        generateparathesis(ans, s + ')', open, close + 1, n);
+        s += ')';
+        generateparathesis(ans, s, open, close - 1);
+        s.pop_back();
     }
 }
 int main()
@@ -24,7 +28,7 @@ int main()
     int n;
     vector<string> ans;
     string s = "";
-    generateparathesis(ans, s, 0, 0, n);
+    generateparathesis(ans, s, n, n);
     for (int i = 0; i < ans.size(); i++)
         cout << ans[i] << endl;
     return 0;
